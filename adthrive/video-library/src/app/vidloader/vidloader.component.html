@@ -1,0 +1,21 @@
+<div class="video-container">
+  <mat-grid-list cols="2" rowHeight="1:1" class="video-list">
+    <mat-grid-tile *ngFor="let video of videos">
+      <mat-card class="video-card" >
+        <mat-card-header>
+          <mat-card-title>
+            {{video.snippet.title}}
+          </mat-card-title>
+          <mat-card-subtitle>{{video.snippet.publishedAt}}</mat-card-subtitle>
+        </mat-card-header>
+        <!--<a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank"></a>-->
+        <img mat-card-image [src]="video.snippet.thumbnails.medium.url" alt="{{video.snippet.title}}">
+        <mat-card-content>
+          <p>
+            {{video.snippet.description.slice(0, 150)}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
