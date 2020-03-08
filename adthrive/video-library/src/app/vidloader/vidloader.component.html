@@ -1,4 +1,10 @@
 <div class="video-container">
+  <div class="pagination">
+    <button mat-raised-button color="primary" *ngIf="prevPageToken" [routerLink]="['/page/'+(currentPage-1), prevPageToken]">PAGE {{currentPage-1}}</button>
+    <button mat-stroked-button color="primary" disabled>PAGE {{currentPage}}</button>
+
+    <button mat-raised-button color="primary"*ngIf="nextPageToken" [routerLink]="['/page/'+(currentPage+1), nextPageToken]">PAGE {{currentPage+1}}</button>
+  </div>
   <mat-grid-list cols="2" rowHeight="1:1" class="video-list">
     <mat-grid-tile *ngFor="let video of videos">
       <mat-card class="video-card" >
@@ -18,4 +24,9 @@
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
-</div>
+  <div class="pagination">
+    <button mat-raised-button color="primary" *ngIf="prevPageToken" [routerLink]="['/page/'+(currentPage-1), prevPageToken]">PAGE {{currentPage-1}}</button>
+    <button mat-stroked-button color="primary" disabled>PAGE {{currentPage}}</button>
+    <button mat-raised-button color="primary"*ngIf="nextPageToken" [routerLink]="['/page/'+(currentPage+1), nextPageToken]">PAGE {{currentPage+1}}</button>
+  </div>
+ </div>

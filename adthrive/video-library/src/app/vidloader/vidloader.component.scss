@@ -6,5 +6,13 @@
       max-width: 400px;
     }
   }
+  .pagination{
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    button{
+      margin: 10px;
+    }
+  }
   
 }
