@@ -1,9 +1,30 @@
 .video-container{
-  .video-list{
-    max-width: 900px;
+  .video-grid{
+    // max-width: 900px;
     margin: auto;
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    grid-gap: 10px;
+    justify-content: center;
+    @media screen and (min-width: 768px ){
+      grid-template-columns: repeat(2, auto);
+      grid-gap: 20px;
+    }
+    @media screen and (min-width: 1200px ){
+      grid-template-columns: repeat(5, auto);
+      grid-gap: 30px;
+    }
     .video-card {
       max-width: 400px;
+    }
+  }
+  .errorContainer{
+    display: flex;
+    justify-content: center;
+    .mat-card{
+      max-width: 360px;
+      word-wrap: anywhere;
+      background: #f44336;
     }
   }
   .pagination{

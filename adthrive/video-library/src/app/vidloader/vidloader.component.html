@@ -1,32 +1,42 @@
 <div class="video-container">
   <div class="pagination">
     <button mat-raised-button color="primary" *ngIf="prevPageToken" [routerLink]="['/page/'+(currentPage-1), prevPageToken]">PAGE {{currentPage-1}}</button>
-    <button mat-stroked-button color="primary" disabled>PAGE {{currentPage}}</button>
-
+    <button mat-button color="primary" disabled *ngIf="currentPage > 0">PAGE {{currentPage}}</button>
     <button mat-raised-button color="primary"*ngIf="nextPageToken" [routerLink]="['/page/'+(currentPage+1), nextPageToken]">PAGE {{currentPage+1}}</button>
   </div>
-  <mat-grid-list cols="2" rowHeight="1:1" class="video-list">
-    <mat-grid-tile *ngFor="let video of videos">
-      <mat-card class="video-card" >
-        <mat-card-header>
+  <div class="video-grid" *ngIf="videos.length !== 0; else showErrorMessage">
+    <mat-card class="video-card" *ngFor="let video of videos" >
+      <mat-card-header>
+        <mat-card-title *ngIf="video.snippet.title.length < 50; else truncate">
+          {{video.snippet.title}}
+        </mat-card-title>
+        <ng-template #truncate>
           <mat-card-title>
-            {{video.snippet.title}}
+            {{video.snippet.title.slice(0,50)}}...
           </mat-card-title>
-          <mat-card-subtitle>{{video.snippet.publishedAt}}</mat-card-subtitle>
-        </mat-card-header>
-        <!--<a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank"></a>-->
-        <img mat-card-image [src]="video.snippet.thumbnails.medium.url" alt="{{video.snippet.title}}">
-        <mat-card-content>
-          <p>
-            {{video.snippet.description.slice(0, 150)}}
-          </p>
-        </mat-card-content>
+        </ng-template>
+        <mat-card-subtitle>{{video.snippet.publishedAt}}</mat-card-subtitle>
+      </mat-card-header>
+      <!--<a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank"></a>-->
+      <img mat-card-image [src]="video.snippet.thumbnails.medium.url" alt="{{video.snippet.title}}">
+      <mat-card-content>
+        <p>
+          <!-- The test required to truncate text to 150 characters, Youtube API already returns a decription with trunctated text and an elipsis at around 150, so decided to leave as is, as it looks better, I did trunctate the titles. -->
+          {{video.snippet.description}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <ng-template #showErrorMessage>
+    <div class="errorContainer">
+      <mat-card >
+        {{ apiService.errorMessage }}
       </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+    </div> 
+  </ng-template>
   <div class="pagination">
     <button mat-raised-button color="primary" *ngIf="prevPageToken" [routerLink]="['/page/'+(currentPage-1), prevPageToken]">PAGE {{currentPage-1}}</button>
-    <button mat-stroked-button color="primary" disabled>PAGE {{currentPage}}</button>
+    <button mat-button color="primary" disabled *ngIf="currentPage > 0">PAGE {{currentPage}}</button>
     <button mat-raised-button color="primary"*ngIf="nextPageToken" [routerLink]="['/page/'+(currentPage+1), nextPageToken]">PAGE {{currentPage+1}}</button>
   </div>
  </div>
