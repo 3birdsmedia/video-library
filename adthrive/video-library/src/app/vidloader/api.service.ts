@@ -7,9 +7,8 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  //apiKey: string = 'AIzaSyD1HtugodenyvisPbzf7laAEY9ktdqD970' 
-  //apiKey: string = 'AIzaSyCeV6KjUGKjl-Y5hVXAMhMjjw-5VSp-AJ8' // Quota met 
-  apiKey: string = 'AIzaSyDSkNPg1jgg7L6QXIuDVCNslAYC3nF2YOI'
+  apiKey: string = 'AIzaSyD1HtugodenyvisPbzf7laAEY9ktdqD970' 
+  //apiKey: string = 'AIzaSyCeV6KjUGKjl-Y5hVXAMhMjjw-5VSp-A--' // Use for testing a bad response 
   apiBaseUrl: string = 'https://www.googleapis.com/youtube/v3/'
   videos: any[]
   channelId: string = 'UCbn1OgGei-DV7aSRo_HaAiw'

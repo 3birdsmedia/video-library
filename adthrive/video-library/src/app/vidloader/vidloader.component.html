@@ -1,8 +1,8 @@
 <div class="video-container">
-  <div class="pagination">
-    <button mat-raised-button color="primary" *ngIf="prevPageToken" [routerLink]="['/page/'+(currentPage-1), prevPageToken]">PAGE {{currentPage-1}}</button>
-    <button mat-button color="primary" disabled *ngIf="currentPage > 0">PAGE {{currentPage}}</button>
-    <button mat-raised-button color="primary"*ngIf="nextPageToken" [routerLink]="['/page/'+(currentPage+1), nextPageToken]">PAGE {{currentPage+1}}</button>
+  <div class="pagination top">
+    <button mat-raised-button color="primary" *ngIf="prevPageToken" class="prevBtn" [routerLink]="['/page/'+(currentPage-1), prevPageToken]">PAGE {{currentPage-1}}</button>
+    <button mat-button color="primary" disabled *ngIf="currentPage > 0" class="currentPageBtn" value="{{currentPage}}">PAGE {{currentPage}}</button>
+    <button mat-raised-button color="primary"*ngIf="nextPageToken" class="nextBtn" [routerLink]="['/page/'+(currentPage+1), nextPageToken]">PAGE {{currentPage+1}}</button>
   </div>
   <div class="video-grid" *ngIf="videos.length !== 0; else showErrorMessage">
     <mat-card class="video-card" *ngFor="let video of videos" >
@@ -35,8 +35,8 @@
     </div> 
   </ng-template>
   <div class="pagination">
-    <button mat-raised-button color="primary" *ngIf="prevPageToken" [routerLink]="['/page/'+(currentPage-1), prevPageToken]">PAGE {{currentPage-1}}</button>
-    <button mat-button color="primary" disabled *ngIf="currentPage > 0">PAGE {{currentPage}}</button>
-    <button mat-raised-button color="primary"*ngIf="nextPageToken" [routerLink]="['/page/'+(currentPage+1), nextPageToken]">PAGE {{currentPage+1}}</button>
+    <button mat-raised-button color="primary" *ngIf="prevPageToken" class="prevBtn" [routerLink]="['/page/'+(currentPage-1), prevPageToken]">PAGE {{currentPage-1}}</button>
+    <button mat-button color="primary" disabled *ngIf="currentPage > 0" class="currentPageBtn" value="{{currentPage}}">PAGE {{currentPage}}</button>
+    <button mat-raised-button color="primary" *ngIf="nextPageToken" class="nextBtn" [routerLink]="['/page/'+(currentPage+1), nextPageToken]">PAGE {{currentPage+1}}</button>
   </div>
  </div>
